@@ -1,0 +1,59 @@
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    color: #202020;
+}
+
+.fccHeader{
+    text-align: center;
+    font-size: 5em;
+    font-weight: 400;
+}
+
+.fccStatus{
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.user-block{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+.user-item{
+    width: 25%;
+    margin-bottom: 2em;
+}
+
+.user-list-item{
+    list-style-type: none;
+}
+
+img{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+/*Media Query */
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .user-item{
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For tablets: */
+    .user-item{
+        width: 33.33%;
+    }
+}
+
+@media only screen  and (min-width : 1224px) {
+    .user-item{
+        width: 25%;
+    }
+}
