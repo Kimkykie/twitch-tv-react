@@ -37,7 +37,7 @@ class FccStatus extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="fcc-div">
             <div className="fccHeader">TWITCH.TV</div>
             {/*Render Offline if status is null and Online if status is streaming*/}
                 { this.state.status === null 

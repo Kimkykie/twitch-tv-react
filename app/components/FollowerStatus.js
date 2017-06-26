@@ -1,29 +1,7 @@
 import React, { Component } from 'react';
 import api from '../utils/api';
 
-function FollowerGrid(props) {
-    return (
-        <ul className="user-block">
-            {props.followers.map((follower) => (
-                <li key={follower.channel._id} className="user-item">
-                    <ul className="user-list-item">
-                            <li>
-                                <img
-                                    className='avatar'
-                                    src={follower.channel.logo}
-                                    alt={`Avatar for ${follower.channel.display_name}`}
-                                />
-                            </li>
-                            <li>Username: {follower.channel.display_name}</li>
-                            <li>Game: {follower.channel.game}</li>
-                            <li>Status: {follower.channel.status}</li>
-                    </ul>
-                </li>
-            ))
-        }
-        </ul>
-    );
-}
+import FollowerGrid from './FollowerGrid';
 
 class FollowerStatus extends Component {
     constructor(props) {
@@ -33,6 +11,7 @@ class FollowerStatus extends Component {
         };
 
         this.updateFollowers = this.updateFollowers.bind(this);
+        this.offlineFollowers = this.offlineFollowers.bind(this);
     }
 
     componentDidMount() {
@@ -47,9 +26,24 @@ class FollowerStatus extends Component {
         });
     }
 
+    offlineFollowers() {
+        const offlinefollowers = this.state.followers.filter((follower) =>
+         follower.channel.status === null);
+
+         this.setState(() => ({
+            followers: offlinefollowers
+         }));
+    }
+
     render() {
         return (
-            <FollowerGrid followers={this.state.followers} />
+            <div>
+                <div className='button-container'>
+                    <button onClick={this.updateFollowers} className='all-btn'>ALL</button>
+                    <button onClick={this.offlineFollowers} className='offline-btn'>OFFLINE</button>
+                </div>
+                <FollowerGrid followers={this.state.followers} />
+            </div>
         );
     }
 }
